@@ -2,7 +2,7 @@
 var connection = require('./connection.js');
 var orm = {
   // selectAll()
-  selectAll: (callback)=> {
+  selectAll: (callback) => {
     // Run MySQL Query
     connection.query('SELECT * FROM burgers', (err, result)=> {
       if (err) throw err;
@@ -12,12 +12,12 @@ var orm = {
   },
 
   // insertOne()
-  insertOne: (burger_name, callback)=>{
+  insertOne: (burger_name, callback) => {
     // Run MySQL Query
     connection.query('INSERT INTO burgers SET ?', {
       burger_name,
       devoured: false
-    }, (err, result)=> {
+    }, (err, result) => {
       if (err) throw err;
       callback(result);
     });
@@ -25,7 +25,7 @@ var orm = {
   },
 
   // updateOne()
-  updateOne: (burgerID, callback)=>{
+  updateOne: (burgerID, callback) => {
     // Run MySQL Query
     connection.query('UPDATE burgers SET ? WHERE ?', [{devoured: true}, {id: burgerID}], (err, result)=> {
         if (err) throw err;
